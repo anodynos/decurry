@@ -1,10 +1,24 @@
-# decurry v1.0.0
+# decurry v1.0.1
 
-Decurry is like the the 'reverse' of curry.  
+[![Build Status](https://travis-ci.org/anodynos/decurry.svg?branch=master)](https://travis-ci.org/anodynos/decurry)
+
+The `decurry` higher order function, is like the the _reverse_ of `curry`.  
 
 Given a composed "curried" function, that due to composition (eg with lodash's [flowRight](https://lodash.com/docs/4.17.2#flowRight) ) has to be called strictly as `fn(arg1)(arg2)(arg3)` to yield its final result, `decurry` gives a "decurried" function that can be called both as the original one, but also in any combination of arguments arrangements: 
-
-  eg `fn(arg1)(arg2)(arg3)` or `fn(arg1, arg2, arg3)` or `fn(arg1)(arg2, arg3)` or `fn(arg1, arg2)(arg3)` or `fn(arg1)(arg2)(arg3)` etc
+  
+  For example 
+  
+  `fn(arg1)(arg2)(arg3)` 
+  
+  `fn(arg1, arg2, arg3)` 
+  
+  `fn(arg1)(arg2, arg3)` 
+  
+  `fn(arg1, arg2)(arg3)` 
+  
+  `fn(arg1)(arg2)(arg3)` 
+  
+  etc, are all equivalent. 
 
 Usage:
 
@@ -13,7 +27,7 @@ Usage:
     var tasks = [
       {
         username: 'Michael', title: 'Curry stray functions',
-        complete: true, effort: 'low', priority: 'low'
+        complete: true, effort: 'low', priority: 'high'
       },
       {
         username: 'Scott', title: 'Add `fork` function',
@@ -23,18 +37,18 @@ Usage:
   
     project = _f.flowRight([_f.map, _f.pick]);
   
-    project(['title', 'dueDate'])(tasks);
+    project(['title', 'priority'])(tasks);
     // works fine, as its called with (arg1)(arg2) and it returns
-    // [ { title: 'Curry stray functions' },
-    //   { title: 'Add `fork` function' }    ]
+    // [ { title: 'Curry stray functions', priority: 'high' },
+    //   { title: 'Add `fork` function', priority: 'low' }    ]
   
-    project(['title', 'dueDate'], tasks);
+    project(['title', 'priority'], tasks);
     // doesn't work, `tasks` is completely ignored and it returns a function that is waiting for `tasks` to yield results
   
     decurriedProject = decurry(project, 2);
   
-    decurriedProject(['title', 'dueDate'], tasks); // works fine
-    decurriedProject(['title', 'dueDate'])(tasks); // works fine also
+    decurriedProject(['title', 'priority'], tasks); // works fine
+    decurriedProject(['title', 'priority'])(tasks); // works fine also
 
 
 Copyright(c) 2016 Agelos Pikoulas (agelos.pikoulas@gmail.com)
