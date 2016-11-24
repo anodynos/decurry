@@ -1,0 +1,51 @@
+{
+  "name": "decurry",
+  "description": "Decurry is the 'reverse' of curry: given a composed function `fn(arg1)(arg2)(arg3)` it gives a function that can be called as `fn(arg1, arg2, arg3)` or `fn(arg1, arg2)(arg3) etc.`",
+  "version": "1.0.0",
+  "homepage": "http://github.com/anodynos/decurry/",
+  "author": {
+    "name": "Angelos Pikoulas",
+    "email": "agelos.pikoulas@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "curry",
+    "combose",
+    "reverse",
+    "decurry",
+    "variadic",
+    "functions",
+    "lodash",
+    "flowRight",
+    "flow"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anodynos/decurry"
+  },
+  "bugs": {
+    "url": "http://github.com/anodynos/decurry/issues",
+    "email": "agelos.pikoulas@gmail.com"
+  },
+  "main": "./build/code/decurry.js",
+  "preferGlobal": false,
+  "scripts": {
+    "test": "grunt"
+  },
+  "directories": {
+    "doc": "./doc",
+    "dist": "./build"
+  },
+  "engines": {
+    "node": ">=0.10 <=6"
+  },
+  "devDependencies": {
+    "chai": "3.5.x",
+    "grunt": "0.4.5",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-urequire": "0.7.x",
+    "mocha": "2.4.x",
+    "urequire": "0.7.0-beta.29",
+    "urequire-ab-specrunner": "^0.2.5"
+  }
+}
