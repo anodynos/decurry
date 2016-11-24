@@ -1,6 +1,6 @@
 {
   "name": "decurry",
-  "description": "Decurry is the 'reverse' of curry: given a composed function `fn(arg1)(arg2)(arg3)` it gives a function that can be called as `fn(arg1, arg2, arg3)` or `fn(arg1, arg2)(arg3) etc.`",
+  "description": "Decurry is the kinda the 'reverse' of curry: given a composed function `fn(arg1)(arg2)(arg3)` it gives a function that can be called as `fn(arg1, arg2, arg3)` or `fn(arg1, arg2)(arg3) etc.`",
   "version": "1.0.0",
   "homepage": "http://github.com/anodynos/decurry/",
   "author": {
