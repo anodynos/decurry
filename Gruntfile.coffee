@@ -26,7 +26,7 @@ module.exports = (grunt) ->
   grunt.registerTask shortCut, "urequire:#{shortCut}" for shortCut of gruntConfig.urequire
   grunt.registerTask shortCut, splitTasks tasks for shortCut, tasks of {
     default: 'lib spec'
-    develop: 'lib specWatch'
+    dev: 'lib specWatch'
   }
   grunt.loadNpmTasks task for task of grunt.file.readJSON('package.json').devDependencies when task.lastIndexOf('grunt-', 0) is 0
   grunt.initConfig gruntConfig

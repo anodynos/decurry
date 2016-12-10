@@ -42,27 +42,30 @@ Usage:
     project(['title', 'priority'], tasks);
     // doesn't work, `tasks` is completely ignored and it returns a function that is waiting for `tasks` to yield results
 
-    decurriedProject = decurry(project, 2);
+    decurriedProject = decurry(2, project);
 
     decurriedProject(['title', 'priority'], tasks); // works fine
     decurriedProject(['title', 'priority'])(tasks); // works fine also
 
 
- @param fn the curriedFunction
+  @param arity number of arguments the function (curried or not) expects.
+         This is crucial, cause its impossible to know from the curried function how many arguments are expected
 
- @param maxArguments the number of arguments the function (curried or not) expects. This is crucial, cause its impossible to know from the curried function how many arguments are expected
+  @param curriedFunction the original curried function
 
- @return the "decurried" function
+  @return the "decurried" function
 ###
-decurry = (curriedFunction, maxArguments = Infinity) ->
+
+module.exports = decurry = (arity, curriedFunction) ->
+  if typeof arity isnt 'number'
+    throw new Error 'decurry(arity, curriedFunction): arity was not a number'
+
   (args...) ->
     result = curriedFunction
-    for arg, i in args when i < maxArguments
+    for arg, i in args when i < arity
       result = result arg
 
-    if args.length < maxArguments
-      result = decurry result, maxArguments - args.length
+    if args.length < arity
+      result = decurry arity - args.length, result
 
     result
-
-module.exports = decurry

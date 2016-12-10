@@ -1,12 +1,9 @@
-# decurry v1.0.1
+# decurry v2.0.0
 
 [![Build Status](https://travis-ci.org/anodynos/decurry.svg?branch=master)](https://travis-ci.org/anodynos/decurry)
 
-The `decurry` higher order function, is like the the _reverse_ of `curry`.  
-
-Given a composed "curried" function, that due to composition (eg with lodash's [flowRight](https://lodash.com/docs/4.17.2#flowRight) ) has to be called strictly as `fn(arg1)(arg2)(arg3)` to yield its final result, `decurry` gives a "decurried" function that can be called both as the original one, but also in any combination of arguments arrangements: 
-  
-  For example 
+The `decurry` higher order function, is like the the _reverse_ of `curry`. It works exactly the same as []Ramda's `uncurryN`](http://ramdajs.com/docs/#uncurryN).                                                                                   
+Given a composed "curried" function, that due to composition (eg with lodash's [flowRight](https://lodash.com/docs/4.17.2#flowRight) ) has to be called strictly as `fn(arg1)(arg2)(arg3)` to yield its final result, `decurry` gives a "decurried" function that can be called both as the original one, but also in any combination of arguments arrangements, for example: 
   
   `fn(arg1)(arg2)(arg3)` 
   
@@ -45,13 +42,13 @@ Usage:
     project(['title', 'priority'], tasks);
     // doesn't work, `tasks` is completely ignored and it returns a function that is waiting for `tasks` to yield results
   
-    decurriedProject = decurry(project, 2);
+    decurriedProject = decurry(2, project);
   
     decurriedProject(['title', 'priority'], tasks); // works fine
     decurriedProject(['title', 'priority'])(tasks); // works fine also
 
 
-Copyright(c) 2016 Agelos Pikoulas (agelos.pikoulas@gmail.com)
+Copyright(c) 2016 Angelos Pikoulas (agelos.pikoulas@gmail.com)
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
