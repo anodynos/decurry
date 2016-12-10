@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/anodynos/decurry.svg?branch=master)](https://travis-ci.org/anodynos/decurry)
 
-The `decurry` higher order function, is like the the _reverse_ of `curry`. It works exactly the same as []Ramda's `uncurryN`](http://ramdajs.com/docs/#uncurryN).                                                                                   
+The `decurry` higher order function, is like the the _reverse_ of `curry`. It works exactly the same as [Ramda's `uncurryN`](http://ramdajs.com/docs/#uncurryN).                                                                                   
+
 Given a composed "curried" function, that due to composition (eg with lodash's [flowRight](https://lodash.com/docs/4.17.2#flowRight) ) has to be called strictly as `fn(arg1)(arg2)(arg3)` to yield its final result, `decurry` gives a "decurried" function that can be called both as the original one, but also in any combination of arguments arrangements, for example: 
   
   `fn(arg1)(arg2)(arg3)` 
