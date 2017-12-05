@@ -45,21 +45,29 @@ describe '''
     projectComposed = R.compose(R.map, R.pick)
 
     data = [
-      {name: 'angelos', surname: 'pikoulas', age: 42},
+      {name: 'angelos', surname: 'pikoulas', age: 42}
       {name: 'anodynos', surname: 'thanatos', age: 43}
     ]
 
     fields = ['name', 'age']
 
     resultData = [
-      {name: 'angelos', age: 42 },
+      {name: 'angelos', age: 42}
       {name: 'anodynos', age: 43}
     ]
 
-    it 'decurry gives the expected result', ->
+    describe 'decurry', ->
       projectUncurried = decurry(2, projectComposed)
-      expect(projectUncurried fields, data).to.deep.equal resultData
 
-    it 'R.uncurryN DOES NOT give the expected result', ->
+      it '2 args together', ->
+        expect(projectUncurried fields, data).to.deep.equal resultData
+      it '1 + 1 args', ->
+        expect(projectUncurried(fields)(data)).to.deep.equal resultData
+
+    describe '*** R.uncurryN FAILS ***:', ->
       projectUncurried = R.uncurryN(2, projectComposed)
-      expect(projectUncurried fields, data).to.not.deep.equal resultData
+
+      it '2 args together', ->
+        expect(projectUncurried fields, data).to.not.deep.equal resultData
+      it '1 + 1 args', ->
+        expect(projectUncurried(fields)(data)).to.not.deep.equal resultData

@@ -36,14 +36,15 @@
   "main": "./build/code/decurry.js",
   "preferGlobal": false,
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "test-dev": "grunt lib specWatch"
   },
   "directories": {
     "doc": "./doc",
     "dist": "./build"
   },
   "engines": {
-    "node": ">=0.10 <=6"
+    "node": ">=0.10 <=9"
   },
   "devDependencies": {
     "chai": "3.5.x",
